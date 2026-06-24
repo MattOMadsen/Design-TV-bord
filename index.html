@@ -3,16 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flise TV Bord - Håndlavet kvalitet</title>
+    <title>Flise TV Bord • Håndlavet kvalitet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-        h1 { color: #333; }
+        .gallery-img { transition: transform 0.3s ease; }
+        .gallery-img:hover { transform: scale(1.05); }
     </style>
 </head>
-<body>
-    <h1>Velkommen til Flise TV Bord</h1>
-    <p>Håndlavede TV-borde med 10x10 cm fliser.</p>
-    <p>Standardmodeller og custom løsninger.</p>
-    <p>Kontakt for tilbud.</p>
+<body class="bg-gray-50 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-gray-900">Flise TV Bord</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#produkter" class="text-gray-600 hover:text-gray-900">Produkter</a>
+                    <a href="#galleri" class="text-gray-600 hover:text-gray-900">Galleri</a>
+                    <a href="#kontakt" class="text-gray-600 hover:text-gray-900">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-16 text-center">
+            <h2 class="text-5xl font-extrabold text-gray-900 tracking-tight">Håndlavede TV-borde<br>med ægte flisekvalitet</h2>
+            <p class="mt-4 text-xl text-gray-600">Bygget af en murer – designet til dit hjem.</p>
+            <div class="mt-8">
+                <a href="#produkter" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700">Se produkter</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Produkter -->
+    <div id="produkter" class="max-w-7xl mx-auto px-4 py-16">
+        <h3 class="text-3xl font-bold text-center mb-10">Vores standardmodeller</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Produkt 1 -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <h4 class="text-xl font-semibold mb-2">Standard 130 cm</h4>
+                <p class="text-gray-600 mb-4">Med åben hylde • 10x10 cm fliser på top</p>
+                <div class="text-3xl font-bold mb-2">5.625 kr <span class="text-sm text-gray-500">(launch-pris)</span></div>
+                <p class="text-sm text-gray-500 mb-4">Normalpris 6.250 kr inkl. moms</p>
+                <a href="#kontakt" class="block w-full text-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700">Bestil tilbud</a>
+            </div>
+            <!-- Flere produkter kan tilføjes -->
+        </div>
+    </div>
+
+    <!-- Galleri -->
+    <div id="galleri" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-10">Galleri – Se eksempler</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="aspect-square bg-gray-200 rounded-xl overflow-hidden">
+                    <img src="https://picsum.photos/id/1015/600/600" alt="Prototype TV bord" class="w-full h-full object-cover gallery-img">
+                </div>
+                <div class="aspect-square bg-gray-200 rounded-xl overflow-hidden">
+                    <img src="https://picsum.photos/id/160/600/600" alt="Flise detalje" class="w-full h-full object-cover gallery-img">
+                </div>
+                <div class="aspect-square bg-gray-200 rounded-xl overflow-hidden">
+                    <img src="https://picsum.photos/id/201/600/600" alt="I stue" class="w-full h-full object-cover gallery-img">
+                </div>
+                <!-- Tilføj flere billeder senere -->
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-4">Billeder erstattes med dine rigtige prototyper</p>
+        </div>
+    </div>
+
+    <!-- Kontakt -->
+    <div id="kontakt" class="max-w-7xl mx-auto px-4 py-16 text-center">
+        <h3 class="text-3xl font-bold mb-4">Klar til at bestille?</h3>
+        <p class="text-xl text-gray-600 mb-8">Skriv til os for tilbud på standard eller custom model.</p>
+        <a href="mailto:matt@graverholtmurerfirma.dk" class="inline-block bg-indigo-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-700">Kontakt mig</a>
+    </div>
+
+    <footer class="bg-gray-900 text-white text-center py-6 text-sm">
+        © 2026 Flise TV Bord • Håndlavet af Matt Madsen
+    </footer>
 </body>
 </html>
