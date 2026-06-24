@@ -4,494 +4,623 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Okker Design • Håndlavede TV-borde med fliser & LED</title>
-    <meta name="description" content="Håndlavede design TV-borde i høj kvalitet med 10×10 cm fliser på toppen og mulighed for indbygget app-styret LED-belysning. Lavet i Danmark.">
+    <meta name="description" content="Håndlavede design TV-borde med 10×10 cm fliser på toppen og mulighed for indbygget app-styret LED-belysning. Lavet i Danmark.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF7F2',
+                        stone: '#1C1917',
+                        tile: '#0D6B5C',
+                        'tile-dark': '#084A40',
+                        'tile-light': '#E8F4F1',
+                        gold: '#B8954A',
+                        'gold-light': '#F5EDD8',
+                        warm: '#78716C',
+                    },
+                    fontFamily: {
+                        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        soft: '0 4px 24px -4px rgba(28, 25, 23, 0.08)',
+                        card: '0 8px 32px -8px rgba(28, 25, 23, 0.12)',
+                        glow: '0 0 0 1px rgba(184, 149, 74, 0.15), 0 12px 40px -12px rgba(13, 107, 92, 0.25)',
+                    },
+                },
+            },
+        };
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;700&display=swap');
-        
-        body {
-            font-family: 'DM Sans', system_ui, sans-serif;
-        }
-        
-        .font-serif {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-        }
-
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.35)), url('https://picsum.photos/id/1015/2000/1200');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .section-label {
-            letter-spacing: 3px;
-            font-size: 0.75rem;
-        }
-
-        .product-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-
-        .nav-scrolled {
-            background-color: rgba(255,255,255,0.95);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 1px 0 0 rgb(0 0 0 / 0.05);
-        }
+        body { font-family: 'DM Sans', system-ui, sans-serif; }
 
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .luxury-gold {
-            color: #c5a46e;
+        .hero-bg {
+            background-image:
+                linear-gradient(105deg, rgba(28, 25, 23, 0.88) 0%, rgba(28, 25, 23, 0.55) 45%, rgba(28, 25, 23, 0.25) 100%),
+                url('images/model-standard-130cm.jpg');
+            background-size: cover;
+            background-position: center 40%;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 1rem;
+            cursor: zoom-in;
+            position: relative;
+        }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(28, 25, 23, 0.35) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item img {
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .gallery-item:hover img { transform: scale(1.06); }
+
+        .product-card { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px -12px rgba(28, 25, 23, 0.18);
+        }
+
+        .process-line {
+            background: linear-gradient(90deg, #0D6B5C 0%, #B8954A 50%, #0D6B5C 100%);
+            height: 2px;
+        }
+
+        .nav-scrolled {
+            background: rgba(250, 247, 242, 0.92) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(28, 25, 23, 0.06), 0 4px 20px -4px rgba(28, 25, 23, 0.08);
+        }
+
+        .input-field {
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #0D6B5C;
+            box-shadow: 0 0 0 3px rgba(13, 107, 92, 0.12);
+        }
+
+        #lightbox.open {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-label {
+            letter-spacing: 0.2em;
         }
     </style>
 </head>
-<body class="bg-[#f8f5f0] text-[#2c2c2c]">
+<body class="bg-cream text-stone antialiased">
+
     <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#e5e0d5]">
-        <div class="max-w-screen-2xl mx-auto">
-            <div class="px-8 py-5 flex items-center justify-between">
-                <div class="flex items-center gap-x-3">
-                    <div class="w-9 h-9 bg-[#2c2c2c] flex items-center justify-center rounded-full">
-                        <span class="text-white font-serif text-2xl tracking-tighter">O</span>
-                    </div>
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex justify-between h-18 items-center py-4">
+                <a href="#" class="group flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-tile flex items-center justify-center text-white text-sm font-bold tracking-tight">OD</div>
                     <div>
-                        <span class="font-serif text-2xl tracking-tighter">Okker</span>
-                        <span class="font-medium text-sm tracking-[2px] text-[#c5a46e]">DESIGN</span>
+                        <p class="font-display text-xl font-semibold text-stone leading-none">Okker Design</p>
+                        <p class="text-[10px] uppercase tracking-[0.18em] text-warm mt-0.5">Håndlavet kvalitet</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
-                    <a href="#produkter" class="hover:text-[#c5a46e] transition-colors">Produkter</a>
-                    <a href="#fordele" class="hover:text-[#c5a46e] transition-colors">Fordele</a>
-                    <a href="#proces" class="hover:text-[#c5a46e] transition-colors">Proces</a>
-                    <a href="#galleri" class="hover:text-[#c5a46e] transition-colors">Galleri</a>
-                </div>
-
-                <div class="flex items-center gap-x-4">
-                    <a href="#kontakt" 
-                       class="px-6 py-2.5 text-sm font-medium border border-[#2c2c2c] hover:bg-[#2c2c2c] hover:text-white transition-all rounded-full">
-                        Kontakt os
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#produkter" class="text-sm font-medium text-warm hover:text-tile transition-colors">Produkter</a>
+                    <a href="#fordele" class="text-sm font-medium text-warm hover:text-tile transition-colors">Fordele</a>
+                    <a href="#proces" class="text-sm font-medium text-warm hover:text-tile transition-colors">Proces</a>
+                    <a href="#galleri" class="text-sm font-medium text-warm hover:text-tile transition-colors">Galleri</a>
+                    <a href="#kontakt" class="inline-flex items-center gap-2 bg-tile hover:bg-tile-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+                        Få tilbud
                     </a>
                 </div>
+
+                <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-stone/5 transition-colors" aria-label="Åbn menu">
+                    <svg id="menu-icon" class="w-5 h-5 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-stone/8 bg-cream px-5 pb-5">
+            <a href="#produkter" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Produkter</a>
+            <a href="#fordele" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Fordele</a>
+            <a href="#proces" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Proces</a>
+            <a href="#galleri" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Galleri</a>
+            <a href="#kontakt" class="mobile-link block mt-3 text-center bg-tile text-white font-semibold py-3 rounded-full">Få tilbud</a>
         </div>
     </nav>
 
     <!-- Hero -->
-    <header class="hero-bg min-h-[100dvh] flex items-center pt-16 relative">
-        <div class="max-w-screen-2xl mx-auto px-8 md:px-12">
+    <header class="hero-bg min-h-[92vh] flex items-end relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-stone/60 via-transparent to-transparent pointer-events-none"></div>
+        <div class="relative w-full max-w-6xl mx-auto px-5 sm:px-8 pb-16 md:pb-24 pt-32">
             <div class="max-w-2xl">
-                <p class="section-label text-white/70 tracking-[3px] text-sm font-medium mb-4">Okker Design · Danmark</p>
-                
-                <h1 class="text-6xl md:text-7xl font-serif text-white leading-none tracking-tighter mb-6">
-                    Håndlavede design TV-borde<br>
-                    <span class="italic">med fliser & valgfri LED</span>
+                <p class="section-label text-xs font-semibold uppercase text-gold-light/90 mb-4 reveal">Okker Design · Danmark</p>
+                <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-white leading-[1.05] tracking-tight reveal" style="transition-delay: 0.1s">
+                    Håndlavede TV-borde<br>
+                    <span class="italic text-gold-light">med fliser & valgfri LED</span>
                 </h1>
-                
-                <p class="max-w-md text-lg text-white/90 mb-10">
-                    Skabt med fokus på tidløst design, høj kvalitet og moderne detaljer. 
-                    Nu med mulighed for professionel app-styret LED-belysning i den åbne hylde.
+                <p class="mt-6 text-lg text-white/80 max-w-lg leading-relaxed reveal" style="transition-delay: 0.2s">
+                    Skabt med fokus på tidløst design og høj kvalitet. Standardmodeller og custom med mulighed for indbygget app-styret LED-belysning.
                 </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#produkter" 
-                       class="inline-flex items-center justify-center px-8 py-4 bg-white text-[#2c2c2c] font-medium rounded-full hover:bg-[#f1ede4] transition-all text-sm tracking-wider">
-                        SE VORES MODELLER
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 reveal" style="transition-delay: 0.3s">
+                    <a href="#produkter" class="inline-flex justify-center items-center bg-tile hover:bg-tile-dark text-white px-8 py-4 rounded-full font-semibold transition-colors shadow-glow">
+                        Se modeller & priser
                     </a>
-                    <a href="#kontakt" 
-                       class="inline-flex items-center justify-center px-8 py-4 border border-white/70 text-white hover:bg-white/10 transition-all rounded-full text-sm tracking-wider">
-                        FÅ ET TILBUD
+                    <a href="#galleri" class="inline-flex justify-center items-center border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold transition-colors backdrop-blur-sm">
+                        Se galleri
                     </a>
+                </div>
+            </div>
+
+            <!-- Trust bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 reveal" style="transition-delay: 0.4s">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">10×10 cm</p>
+                    <p class="text-sm text-white/70 mt-1">Fliser på top</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">100%</p>
+                    <p class="text-sm text-white/70 mt-1">Håndlavet i DK</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">Custom</p>
+                    <p class="text-sm text-white/70 mt-1">Dit design, vores håndværk</p>
+                </div>
+                <div class="bg-gold/20 backdrop-blur-md rounded-2xl px-5 py-4 border border-gold/30">
+                    <p class="font-display text-2xl font-semibold text-gold-light">−15%</p>
+                    <p class="text-sm text-white/70 mt-1">Launch-priser nu</p>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Produkter -->
-    <section id="produkter" class="max-w-screen-2xl mx-auto px-8 md:px-12 pt-20 pb-16">
-        <div class="flex justify-between items-end mb-10">
-            <div>
-                <span class="section-label text-[#c5a46e] tracking-[2px]">STANDARDMODELLER</span>
-                <h2 class="font-serif text-5xl tracking-tighter">Vores kollektion</h2>
+    <section id="produkter" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Produkter</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone">Vores standardmodeller</h2>
+                <p class="mt-4 text-warm text-lg">Alle med åben hylde og 10×10 cm fliser på toppen. Klar til levering efter bestilling.</p>
             </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Lille -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-soft border border-stone/5 reveal">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/model-lille-110cm.jpg" alt="Lille TV-bord 110 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-tile-light text-tile text-xs font-semibold uppercase tracking-wide rounded-full">Lille</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">110 cm</h3>
+                        <p class="text-warm mt-2">Perfekt til mindre stuer eller soveværelse</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-stone">5.950 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 6.950 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Åben hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Håndlavet i krydsfiner</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Indbygget app-styret LED (tilvalg +1.995 kr)</li>
+                        </ul>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center border-2 border-stone/10 hover:border-tile hover:text-tile text-stone py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Standard -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-glow border-2 border-tile/20 relative md:-mt-4 reveal" style="transition-delay: 0.1s">
+                    <div class="absolute top-4 right-4 z-10 bg-tile text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Mest populær</div>
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/model-standard-130cm.jpg" alt="Standard TV-bord 130 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-gold-light text-gold text-xs font-semibold uppercase tracking-wide rounded-full">Standard</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">130 cm</h3>
+                        <p class="text-warm mt-2">Den perfekte størrelse til de fleste stuer</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-tile">7.450 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 8.750 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Åben hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser på top</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Armeringsnet for holdbarhed</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Indbygget app-styret LED (tilvalg +1.995 kr)</li>
+                        </ul>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center bg-tile hover:bg-tile-dark text-white py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Stor -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-soft border border-stone/5 reveal" style="transition-delay: 0.2s">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/model-stor-160cm.jpg" alt="Stor TV-bord 160 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-gold-light text-gold text-xs font-semibold uppercase tracking-wide rounded-full">Stor</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">160 cm</h3>
+                        <p class="text-warm mt-2">Til store stuer med masser af opbevaring</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-stone">8.950 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 10.500 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Ekstra stor hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Premium finish</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Indbygget app-styret LED (tilvalg +1.995 kr)</li>
+                        </ul>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center border-2 border-stone/10 hover:border-tile hover:text-tile text-stone py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <p class="text-center text-sm text-warm mt-10 reveal">Custom løsninger: materialer + 400 kr/time + 20% margin. <a href="#kontakt" class="text-tile font-medium hover:underline">Kontakt os</a> for et tilbud.</p>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            
-            <!-- Lille -->
-            <article class="product-card bg-white rounded-3xl overflow-hidden border border-[#e5e0d5]">
-                <div class="px-8 pt-8 pb-6">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <span class="text-xs tracking-[2px] text-[#c5a46e] font-medium">LILLE</span>
-                            <h3 class="font-serif text-4xl tracking-tighter">110 cm</h3>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-3xl font-medium">5.950 kr</div>
-                            <div class="text-xs text-[#888] line-through">Normalpris 6.950 kr</div>
-                        </div>
-                    </div>
-                    
-                    <p class="mt-4 text-[#555]">Perfekt til mindre stuer eller soveværelse. Kompakt og elegant.</p>
-                    
-                    <ul class="mt-6 space-y-2 text-sm">
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Åben hylde</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> 10×10 cm fliser på top</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Håndlavet i krydsfiner</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Indbygget app-styret LED (tilvalg)</li>
-                    </ul>
-                </div>
-                
-                <div class="border-t border-[#e5e0d5] px-8 py-5 bg-[#faf8f3]">
-                    <a href="#kontakt" 
-                       class="block w-full text-center py-3.5 text-sm font-medium border border-[#2c2c2c] hover:bg-[#2c2c2c] hover:text-white transition-all rounded-2xl">
-                        Bestil denne model
-                    </a>
-                </div>
-            </article>
-
-            <!-- Standard -->
-            <article class="product-card bg-white rounded-3xl overflow-hidden border border-[#e5e0d5] relative">
-                <div class="absolute top-6 right-6 bg-[#c5a46e] text-white text-[10px] tracking-widest px-3 py-1 rounded-full font-medium">MEST POPULÆR</div>
-                
-                <div class="px-8 pt-8 pb-6">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <span class="text-xs tracking-[2px] text-[#c5a46e] font-medium">STANDARD</span>
-                            <h3 class="font-serif text-4xl tracking-tighter">130 cm</h3>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-3xl font-medium">7.450 kr</div>
-                            <div class="text-xs text-[#888] line-through">Normalpris 8.750 kr</div>
-                        </div>
-                    </div>
-                    
-                    <p class="mt-4 text-[#555]">Den perfekte størrelse til de fleste stuer. God balance mellem look og opbevaring.</p>
-                    
-                    <ul class="mt-6 space-y-2 text-sm">
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Stor åben hylde</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> 10×10 cm fliser på top</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Armeringsnet for holdbarhed</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Indbygget app-styret LED (tilvalg)</li>
-                    </ul>
-                </div>
-                
-                <div class="border-t border-[#e5e0d5] px-8 py-5 bg-[#faf8f3]">
-                    <a href="#kontakt" 
-                       class="block w-full text-center py-3.5 text-sm font-medium border border-[#2c2c2c] hover:bg-[#2c2c2c] hover:text-white transition-all rounded-2xl">
-                        Bestil denne model
-                    </a>
-                </div>
-            </article>
-
-            <!-- Stor -->
-            <article class="product-card bg-white rounded-3xl overflow-hidden border border-[#e5e0d5]">
-                <div class="px-8 pt-8 pb-6">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <span class="text-xs tracking-[2px] text-[#c5a46e] font-medium">STOR</span>
-                            <h3 class="font-serif text-4xl tracking-tighter">160 cm</h3>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-3xl font-medium">8.950 kr</div>
-                            <div class="text-xs text-[#888] line-through">Normalpris 10.500 kr</div>
-                        </div>
-                    </div>
-                    
-                    <p class="mt-4 text-[#555]">Til store stuer med masser af plads. Ekstra imponerende tilstedeværelse.</p>
-                    
-                    <ul class="mt-6 space-y-2 text-sm">
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Ekstra stor hylde</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> 10×10 cm fliser på top</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Premium finish</li>
-                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-[#c5a46e]"></i> Indbygget app-styret LED (tilvalg)</li>
-                    </ul>
-                </div>
-                
-                <div class="border-t border-[#e5e0d5] px-8 py-5 bg-[#faf8f3]">
-                    <a href="#kontakt" 
-                       class="block w-full text-center py-3.5 text-sm font-medium border border-[#2c2c2c] hover:bg-[#2c2c2c] hover:text-white transition-all rounded-2xl">
-                        Bestil denne model
-                    </a>
-                </div>
-            </article>
-            
-        </div>
-        
-        <p class="text-center text-sm text-[#666] mt-8">LED-belysning tilføjes som tilvalg for <span class="font-medium">1.995 kr</span> på alle modeller.</p>
     </section>
 
     <!-- Fordele -->
-    <section id="fordele" class="bg-white py-16 border-y border-[#e5e0d5]">
-        <div class="max-w-screen-2xl mx-auto px-8 md:px-12">
-            <div class="max-w-xl mb-12">
-                <span class="section-label text-[#c5a46e] tracking-[2px]">HVORFOR OKKER DESIGN?</span>
-                <h2 class="font-serif text-5xl tracking-tighter leading-none mt-2">Kvalitet der holder i mange år</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-                <!-- LED Feature -->
-                <div class="reveal bg-[#f8f5f0] p-8 rounded-3xl">
-                    <div class="luxury-gold mb-4">
-                        <i class="fa-solid fa-lightbulb text-3xl"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl mb-3">Indbygget app-styret LED belysning</h3>
-                    <p class="text-[#555] leading-relaxed">
-                        Professionel belysning i den åbne hylde monteret i rene aluminiumsprofiler med diffusor. 
-                        Det giver et blødt, jævnt glow der ser helt indbygget ud. 
-                        Styr lyset direkte fra din telefon – dæmpning, scener og tidsplaner. 
-                        Fås som tilvalg for 1.995 kr.
-                    </p>
+    <section id="fordele" class="py-20 md:py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal">
+                    <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Fordele</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone leading-tight">Hvorfor vælge<br>Okker Design?</h2>
+                    <p class="mt-5 text-warm text-lg leading-relaxed">Vi kombinerer høj håndværksmæssig kvalitet med tidløst design — så du får et møbel der både ser fantastisk ud og holder i mange år.</p>
+                    <a href="#proces" class="inline-flex items-center gap-2 mt-8 text-tile font-semibold hover:gap-3 transition-all">
+                        Se hvordan det laves
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
                 </div>
 
-                <div class="reveal bg-[#f8f5f0] p-8 rounded-3xl">
-                    <div class="luxury-gold mb-4">
-                        <i class="fa-solid fa-tools text-3xl"></i>
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <!-- LED Feature -->
+                    <div class="bg-cream rounded-2xl p-6 reveal">
+                        <div class="w-11 h-11 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-lightbulb text-gold text-xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Indbygget app-styret LED belysning</h3>
+                        <p class="text-sm text-warm leading-relaxed">Professionel LED i aluminiumsprofiler med diffusor i den åbne hylde. Styr det hele fra mobilen (dæmpning, scener, tidsplaner). Fås som tilvalg for 1.995 kr.</p>
                     </div>
-                    <h3 class="font-serif text-2xl mb-3">Høj håndværksmæssig kvalitet</h3>
-                    <p class="text-[#555] leading-relaxed">
-                        Bygget i massiv krydsfiner med armeringsnet, fleksibel klæber og professionel fugning. 
-                        Et møbel der både ser fantastisk ud og holder i mange år.
-                    </p>
-                </div>
 
-                <div class="reveal bg-[#f8f5f0] p-8 rounded-3xl">
-                    <div class="luxury-gold mb-4">
-                        <i class="fa-solid fa-palette text-3xl"></i>
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.1s">
+                        <div class="w-11 h-11 rounded-xl bg-tile-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Høj kvalitet</h3>
+                        <p class="text-sm text-warm leading-relaxed">Bygget i krydsfiner med armeringsnet, fleksibel klæber og professionel fugning — lavet til at holde.</p>
                     </div>
-                    <h3 class="font-serif text-2xl mb-3">Custom muligheder</h3>
-                    <p class="text-[#555] leading-relaxed">
-                        Vælg størrelse, flisemønster, finish og om du vil have indbygget LED-belysning. 
-                        Vi laver det præcis som du ønsker det.
-                    </p>
-                </div>
 
-                <div class="reveal bg-[#f8f5f0] p-8 rounded-3xl">
-                    <div class="luxury-gold mb-4">
-                        <i class="fa-solid fa-globe text-3xl"></i>
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.2s">
+                        <div class="w-11 h-11 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0 0 .5-1.5 1.5-2.5s2.5-1.5 2.5-1.5"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Custom muligheder</h3>
+                        <p class="text-sm text-warm leading-relaxed">Vælg størrelse, flisemønster, finish og LED-belysning. Vi laver det præcis som du ønsker.</p>
                     </div>
-                    <h3 class="font-serif text-2xl mb-3">Håndlavet i Danmark</h3>
-                    <p class="text-[#555] leading-relaxed">
-                        Hvert enkelt TV-bord bliver lavet med stor omhu i Danmark. 
-                        Vi tror på ærligt håndværk og tidløst design.
-                    </p>
+
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.3s">
+                        <div class="w-11 h-11 rounded-xl bg-tile-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Håndlavet i Danmark</h3>
+                        <p class="text-sm text-warm leading-relaxed">Hvert TV-bord bliver lavet med omhu i Danmark af erfarne håndværkere.</p>
+                    </div>
                 </div>
-                
             </div>
         </div>
     </section>
 
     <!-- Proces -->
-    <section id="proces" class="max-w-screen-2xl mx-auto px-8 md:px-12 py-20">
-        <div class="max-w-xl mb-12">
-            <span class="section-label text-[#c5a46e] tracking-[2px]">SÅDAN BLIVER DET TIL</span>
-            <h2 class="font-serif text-5xl tracking-tighter">Fra idé til færdigt møbel</h2>
-        </div>
+    <section id="proces" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Proces</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone">Hvordan det laves</h2>
+                <p class="mt-4 text-warm text-lg">Høj kvalitet fra første snit til sidste fuge</p>
+            </div>
 
-        <div class="grid md:grid-cols-4 gap-8">
-            <div class="reveal">
-                <div class="flex items-center gap-x-4 mb-4">
-                    <div class="w-9 h-9 rounded-full bg-[#2c2c2c] text-white flex items-center justify-center font-medium">1</div>
-                    <h4 class="font-medium text-lg">Design & mål</h4>
+            <div class="hidden lg:block process-line max-w-4xl mx-auto mb-0 -mt-4 relative top-8 z-0 reveal"></div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">1</div>
+                    <h3 class="font-semibold text-lg mb-2">Design & mål</h3>
+                    <p class="text-sm text-warm leading-relaxed">Vi aftaler størrelse, flisetype, finish og om du vil have LED-belysning.</p>
                 </div>
-                <p class="text-[#555]">Vi aftaler størrelse, flisetype, finish og om du vil have indbygget LED-belysning.</p>
-            </div>
-            
-            <div class="reveal">
-                <div class="flex items-center gap-x-4 mb-4">
-                    <div class="w-9 h-9 rounded-full bg-[#2c2c2c] text-white flex items-center justify-center font-medium">2</div>
-                    <h4 class="font-medium text-lg">Bygning</h4>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.1s">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">2</div>
+                    <h3 class="font-semibold text-lg mb-2">Bygning</h3>
+                    <p class="text-sm text-warm leading-relaxed">Solid kasse i krydsfiner med åben hylde. Kanaler til LED-profiler fræses hvis ønsket.</p>
                 </div>
-                <p class="text-[#555]">Solid kasse i krydsfiner med åben hylde. Kanaler til LED-profiler fræses hvis ønsket.</p>
-            </div>
-            
-            <div class="reveal">
-                <div class="flex items-center gap-x-4 mb-4">
-                    <div class="w-9 h-9 rounded-full bg-[#2c2c2c] text-white flex items-center justify-center font-medium">3</div>
-                    <h4 class="font-medium text-lg">Fliseopsætning</h4>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.2s">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">3</div>
+                    <h3 class="font-semibold text-lg mb-2">Fliseopsætning</h3>
+                    <p class="text-sm text-warm leading-relaxed">Primer, armeringsnet, fleksibel klæber og 10×10 cm fliser lagt præcist.</p>
                 </div>
-                <p class="text-[#555]">Primer, armeringsnet, fleksibel klæber og 10×10 cm fliser lagt med præcision.</p>
-            </div>
-            
-            <div class="reveal">
-                <div class="flex items-center gap-x-4 mb-4">
-                    <div class="w-9 h-9 rounded-full bg-[#2c2c2c] text-white flex items-center justify-center font-medium">4</div>
-                    <h4 class="font-medium text-lg">Fuge & finish</h4>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.3s">
+                    <div class="w-10 h-10 rounded-full bg-gold text-white font-display text-xl font-semibold flex items-center justify-center mb-5">4</div>
+                    <h3 class="font-semibold text-lg mb-2">Fuge & finish + LED</h3>
+                    <p class="text-sm text-warm leading-relaxed">Professionel fuge og finish. LED monteres og testes inden levering.</p>
                 </div>
-                <p class="text-[#555]">Professionel fuge og finish. LED monteres og testes inden levering.</p>
             </div>
         </div>
     </section>
 
     <!-- Galleri -->
-    <section id="galleri" class="bg-white py-16 border-y border-[#e5e0d5]">
-        <div class="max-w-screen-2xl mx-auto px-8 md:px-12">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <span class="section-label text-[#c5a46e]">INSPIRATION</span>
-                    <h2 class="font-serif text-5xl tracking-tighter">Galleri</h2>
-                </div>
+    <section id="galleri" class="py-20 md:py-28 bg-stone">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-gold mb-3">Galleri</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-white">Inspiration & eksempler</h2>
+                <p class="mt-4 text-white/60 text-lg">Klik på et billede for at se det i fuld størrelse</p>
             </div>
-            
-            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- JS populated -->
-            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
         </div>
     </section>
 
     <!-- Kontakt -->
-    <section id="kontakt" class="max-w-screen-2xl mx-auto px-8 md:px-12 py-20">
-        <div class="max-w-2xl mx-auto text-center">
-            <span class="section-label text-[#c5a46e] tracking-[2px]">KOM I GANG</span>
-            <h2 class="font-serif text-5xl tracking-tighter mt-2 mb-4">Klar til dit nye TV-bord?</h2>
-            <p class="text-[#555] max-w-md mx-auto">Skriv til os for et uforpligtende tilbud — både på standardmodeller og custom løsninger med LED.</p>
-        </div>
+    <section id="kontakt" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <div class="reveal">
+                    <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Kontakt</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone leading-tight">Klar til dit<br>nye TV-bord?</h2>
+                    <p class="mt-5 text-warm text-lg leading-relaxed">Skriv til os for et uforpligtende tilbud — både på standardmodeller og custom løsninger med LED.</p>
 
-        <div class="max-w-md mx-auto mt-10">
-            <form action="mailto:Mattomadsen@proton.me" method="POST" enctype="text/plain" 
-                  class="space-y-4">
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" name="navn" placeholder="Dit navn" required 
-                           class="input-field w-full px-5 py-3.5 border border-[#d1c9b8] rounded-2xl text-sm">
-                    <input type="tel" name="telefon" placeholder="Telefonnummer" required 
-                           class="input-field w-full px-5 py-3.5 border border-[#d1c9b8] rounded-2xl text-sm">
+                    <div class="mt-10 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-tile-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">E-mail</p>
+                                <a href="mailto:Mattomadsen@proton.me" class="text-tile hover:underline">Mattomadsen@proton.me</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-tile-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">Lokation</p>
+                                <p class="text-warm">Ebeltoft, Danmark</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">Svartid</p>
+                                <p class="text-warm">Normalt inden for 1–2 hverdage</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <input type="email" name="email" placeholder="Din email" required 
-                       class="input-field w-full px-5 py-3.5 border border-[#d1c9b8] rounded-2xl text-sm">
-                
-                <textarea name="besked" rows="5" placeholder="Skriv gerne hvilken model du er interesseret i, og om du ønsker LED-belysning..." required
-                          class="input-field w-full px-5 py-3.5 border border-[#d1c9b8] rounded-3xl text-sm"></textarea>
-                
-                <button type="submit"
-                        class="w-full py-4 bg-[#2c2c2c] hover:bg-black text-white font-medium rounded-2xl transition-all tracking-wider text-sm">
-                    SEND FORESØRGSEL
-                </button>
-            </form>
-            
-            <div class="mt-8 text-center text-sm text-[#666]">
-                <p class="mb-1">Eller skriv direkte til os:</p>
-                <a href="mailto:Mattomadsen@proton.me" class="font-medium text-[#2c2c2c] hover:text-[#c5a46e]">Mattomadsen@proton.me</a>
-                <div class="mt-1">Ebeltoft, Danmark • Normalt svar inden for 1–2 hverdage</div>
+
+                <div class="bg-white rounded-3xl shadow-card p-8 md:p-10 border border-stone/5 reveal" style="transition-delay: 0.15s">
+                    <form action="mailto:Mattomadsen@proton.me" method="post" enctype="text/plain">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label class="block text-sm font-medium text-stone mb-2">Navn</label>
+                                <input type="text" name="navn" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone mb-2">Telefon</label>
+                                <input type="tel" name="telefon" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="block text-sm font-medium text-stone mb-2">Ønsket model / størrelse</label>
+                            <input type="text" name="model" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" placeholder="F.eks. Standard 130 cm eller custom">
+                        </div>
+
+                        <div class="mb-7">
+                            <label class="block text-sm font-medium text-stone mb-2">Besked</label>
+                            <textarea name="besked" rows="4" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50 resize-none" placeholder="Skriv gerne dine ønsker her, inkl. LED hvis ønsket..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-tile hover:bg-tile-dark text-white py-4 rounded-full font-semibold text-lg transition-colors">
+                            Send forespørgsel
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="border-t border-[#e5e0d5] py-8">
-        <div class="max-w-screen-2xl mx-auto px-8 md:px-12 flex flex-col md:flex-row justify-between items-center gap-y-3 text-sm text-[#666]">
-            <div>
-                © 2026 Okker Design. Alle rettigheder forbeholdt.
+    <!-- Lightbox -->
+    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-stone/95 items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true">
+        <button id="lightbox-close" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Luk">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <button id="lightbox-prev" class="absolute left-4 md:left-8 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Forrige">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 md:right-8 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Næste">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+        <p id="lightbox-counter" class="absolute bottom-6 text-white/60 text-sm"></p>
+    </div>
+
+    <footer class="bg-stone text-white py-14">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <p class="font-display text-2xl font-semibold">Okker Design</p>
+                    <p class="text-sm text-white/50 mt-1">Håndlavet i Danmark</p>
+                </div>
+                <div class="flex gap-6 text-sm text-white/50">
+                    <a href="#produkter" class="hover:text-white transition-colors">Produkter</a>
+                    <a href="#galleri" class="hover:text-white transition-colors">Galleri</a>
+                    <a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a>
+                </div>
             </div>
-            <div class="flex items-center gap-x-6">
-                <span>Håndlavet i Danmark</span>
+            <div class="border-t border-white/10 mt-10 pt-8 text-center text-xs text-white/30">
+                © 2026 Okker Design · Alle rettigheder forbeholdes
             </div>
         </div>
     </footer>
 
-    <!-- Lightbox -->
-    <div id="lightbox" onclick="closeLightbox()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
-        <div onclick="event.stopImmediatePropagation()" class="max-w-5xl w-full relative">
-            <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white text-3xl hover:text-[#c5a46e]">
-                <i class="fa-solid fa-times"></i>
-            </button>
-            <img id="lightbox-image" class="max-h-[85vh] mx-auto rounded-2xl shadow-2xl" alt="">
-        </div>
-    </div>
-
     <script>
-        // Gallery images (using placeholder images for now)
         const galleryImages = [
-            'https://picsum.photos/id/1015/800/600',
-            'https://picsum.photos/id/160/800/600',
-            'https://picsum.photos/id/201/800/600',
-            'https://picsum.photos/id/251/800/600',
-            'https://picsum.photos/id/29/800/600',
-            'https://picsum.photos/id/30/800/600',
-            'https://picsum.photos/id/48/800/600',
-            'https://picsum.photos/id/133/800/600'
+            'galleri-01-hvid-flise-stue.jpg',
+            'galleri-02.jpg',
+            'model-lille-110cm.jpg',
+            'galleri-03.jpg',
+            'galleri-04.jpg',
+            'galleri-05.jpg',
+            'galleri-06.jpg',
+            'galleri-07.jpg',
+            'galleri-08.jpg',
+            'galleri-09.jpg',
+            'model-standard-130cm.jpg',
+            'galleri-10.jpg',
+            'model-stor-160cm.jpg',
+            'galleri-11.jpg',
+            'galleri-12.jpg',
+            'galleri-13.jpg',
+            'galleri-14.jpg'
         ];
-        
-        function initGallery() {
-            const grid = document.getElementById('gallery-grid');
-            if (!grid) return;
-            
-            grid.innerHTML = '';
-            
-            galleryImages.forEach((src, index) => {
-                const div = document.createElement('div');
-                div.className = `gallery-item aspect-[4/3] overflow-hidden rounded-2xl bg-[#f1ede4]`;
-                div.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Okker Design TV-bord ${index + 1}">`;
-                
-                div.addEventListener('click', () => openLightbox(src));
-                grid.appendChild(div);
-            });
-        }
-        
-        function openLightbox(src) {
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-image');
-            
-            img.src = src;
+
+        const galleryGrid = document.getElementById('gallery-grid');
+        let currentLightboxIndex = 0;
+
+        galleryImages.forEach((filename, index) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'gallery-item aspect-square reveal';
+            item.style.transitionDelay = `${(index % 8) * 0.05}s`;
+            item.innerHTML = `<img src="images/${filename}" alt="Okker Design eksempel ${index + 1}" class="w-full h-full object-cover" loading="lazy">`;
+            item.addEventListener('click', () => openLightbox(index));
+            galleryGrid.appendChild(item);
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightbox();
             lightbox.classList.remove('hidden');
-            lightbox.classList.add('flex');
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
-        
+
         function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('flex');
             lightbox.classList.add('hidden');
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
         }
-        
-        function initReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            
-            reveals.forEach(el => observer.observe(el));
+
+        function updateLightbox() {
+            const filename = galleryImages[currentLightboxIndex];
+            lightboxImg.src = `images/${filename}`;
+            lightboxImg.alt = `Okker Design eksempel ${currentLightboxIndex + 1}`;
+            lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${galleryImages.length}`;
         }
-        
-        function initializeSite() {
-            initGallery();
-            initReveal();
-            
-            // Navbar scroll
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('nav-scrolled');
-                } else {
-                    navbar.classList.remove('nav-scrolled');
+
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-prev').addEventListener('click', () => {
+            currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightbox();
+        });
+        document.getElementById('lightbox-next').addEventListener('click', () => {
+            currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+            updateLightbox();
+        });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+            if (e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('nav-scrolled', window.scrollY > 40);
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
                 }
             });
-            
-            console.log('%c[Okker Design] Site opdateret og uploadet succesfuldt.', 'color:#c5a46e');
-        }
-        
-        window.onload = initializeSite;
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            if (!el.style.transitionDelay) el.style.transitionDelay = `${Math.min(i * 0.05, 0.4)}s`;
+        });
     </script>
 </body>
 </html>
