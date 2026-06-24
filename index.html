@@ -8,81 +8,263 @@
     <style>
         .gallery-img { transition: transform 0.3s ease; }
         .gallery-img:hover { transform: scale(1.05); }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
     <!-- Navbar -->
-    <nav class="bg-white shadow">
+    <nav class="bg-white shadow sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
                     <h1 class="text-2xl font-bold text-gray-900">Flise TV Bord</h1>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="#produkter" class="text-gray-600 hover:text-gray-900">Produkter</a>
-                    <a href="#galleri" class="text-gray-600 hover:text-gray-900">Galleri</a>
-                    <a href="#kontakt" class="text-gray-600 hover:text-gray-900">Kontakt</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#produkter" class="text-gray-600 hover:text-gray-900 font-medium">Produkter</a>
+                    <a href="#fordele" class="text-gray-600 hover:text-gray-900 font-medium">Fordele</a>
+                    <a href="#galleri" class="text-gray-600 hover:text-gray-900 font-medium">Galleri</a>
+                    <a href="#kontakt" class="text-gray-600 hover:text-gray-900 font-medium">Kontakt</a>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-600">
+                        ☰
+                    </button>
                 </div>
             </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <a href="#produkter" class="block py-2 text-gray-600">Produkter</a>
+            <a href="#fordele" class="block py-2 text-gray-600">Fordele</a>
+            <a href="#galleri" class="block py-2 text-gray-600">Galleri</a>
+            <a href="#kontakt" class="block py-2 text-gray-600">Kontakt</a>
         </div>
     </nav>
 
     <!-- Hero -->
     <div class="bg-white">
-        <div class="max-w-7xl mx-auto px-4 py-16 text-center">
-            <h2 class="text-5xl font-extrabold text-gray-900 tracking-tight">Håndlavede TV-borde<br>med ægte flisekvalitet</h2>
-            <p class="mt-4 text-xl text-gray-600">Bygget af en murer – designet til dit hjem.</p>
-            <div class="mt-8">
-                <a href="#produkter" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700">Se produkter</a>
+        <div class="max-w-7xl mx-auto px-4 py-20 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                    Håndlavede TV-borde<br>
+                    <span class="text-indigo-600">med ægte flisekvalitet</span>
+                </h2>
+                <p class="mt-6 text-xl text-gray-600">Bygget af en erfaren murer. Designet til dit hjem. Med mulighed for custom løsninger.</p>
+                
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#produkter" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors">
+                        Se vores modeller
+                    </a>
+                    <a href="#kontakt" class="inline-block border-2 border-gray-300 hover:bg-gray-100 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg transition-colors">
+                        Få et tilbud
+                    </a>
+                </div>
+                <p class="mt-4 text-sm text-gray-500">Launch-priser – spar op til 15%</p>
             </div>
         </div>
     </div>
 
     <!-- Produkter -->
     <div id="produkter" class="max-w-7xl mx-auto px-4 py-16">
-        <h3 class="text-3xl font-bold text-center mb-10">Vores standardmodeller</h3>
+        <div class="text-center mb-12">
+            <h3 class="text-4xl font-bold text-gray-900">Vores standardmodeller</h3>
+            <p class="mt-3 text-xl text-gray-600">Alle med åben hylde og 10x10 cm fliser på toppen</p>
+        </div>
+
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Produkt 1 -->
-            <div class="bg-white rounded-xl shadow p-6">
-                <h4 class="text-xl font-semibold mb-2">Standard 130 cm</h4>
-                <p class="text-gray-600 mb-4">Med åben hylde • 10x10 cm fliser på top</p>
-                <div class="text-3xl font-bold mb-2">5.625 kr <span class="text-sm text-gray-500">(launch-pris)</span></div>
-                <p class="text-sm text-gray-500 mb-4">Normalpris 6.250 kr inkl. moms</p>
-                <a href="#kontakt" class="block w-full text-center bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700">Bestil tilbud</a>
+            <!-- Lille -->
+            <div class="product-card bg-white rounded-2xl shadow p-8 border">
+                <div class="mb-6">
+                    <span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">Lille</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2">110 cm</h4>
+                <p class="text-gray-600 mb-6">Perfekt til mindre stuer eller soveværelse</p>
+                
+                <div class="mb-6">
+                    <div class="flex items-baseline">
+                        <span class="text-4xl font-bold">4.500 kr</span>
+                        <span class="ml-2 text-sm text-gray-500">inkl. moms</span>
+                    </div>
+                    <p class="text-sm text-gray-500 line-through">Normalpris 5.000 kr</p>
+                </div>
+                
+                <ul class="text-sm text-gray-600 space-y-2 mb-8">
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Åben hylde</li>
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 10x10 cm fliser</li>
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Håndlavet i krydsfiner</li>
+                </ul>
+                
+                <a href="#kontakt" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-colors">
+                    Bestil denne model
+                </a>
             </div>
-            <!-- Flere produkter kan tilføjes -->
+
+            <!-- Standard (populær) -->
+            <div class="product-card bg-white rounded-2xl shadow p-8 border-2 border-indigo-600 relative">
+                <div class="absolute -top-3 right-6 bg-indigo-600 text-white text-xs font-bold px-4 py-1 rounded-full">MEST POPULÆR</div>
+                
+                <div class="mb-6">
+                    <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 text-sm font-medium rounded-full">Standard</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2">130 cm</h4>
+                <p class="text-gray-600 mb-6">Den perfekte størrelse til de fleste stuer</p>
+                
+                <div class="mb-6">
+                    <div class="flex items-baseline">
+                        <span class="text-4xl font-bold">5.625 kr</span>
+                        <span class="ml-2 text-sm text-gray-500">inkl. moms</span>
+                    </div>
+                    <p class="text-sm text-gray-500 line-through">Normalpris 6.250 kr</p>
+                </div>
+                
+                <ul class="text-sm text-gray-600 space-y-2 mb-8">
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Åben hylde</li>
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 10x10 cm fliser på top</li>
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Armeringsnet for ekstra holdbarhed</li>
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Håndlavet af murer</li>
+                </ul>
+                
+                <a href="#kontakt" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-colors">
+                    Bestil denne model
+                </a>
+            </div>
+
+            <!-- Stor -->
+            <div class="product-card bg-white rounded-2xl shadow p-8 border">
+                <div class="mb-6">
+                    <span class="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-sm font-medium rounded-full">Stor</span>
+                </div>
+                <h4 class="text-2xl font-bold mb-2">160 cm</h4>
+                <p class="text-gray-600 mb-6">Til store stuer eller med masser af opbevaring</p>
+                
+                <div class="mb-6">
+                    <div class="flex items-baseline">
+                        <span class="text-4xl font-bold">6.750 kr</span>
+                        <span class="ml-2 text-sm text-gray-500">inkl. moms</span>
+                    </div>
+                    <p class="text-sm text-gray-500 line-through">Normalpris 7.500 kr</p>
+                </div>
+                
+                <ul class="text-sm text-gray-600 space-y-2 mb-8">
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Ekstra stor hylde</li>
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 10x10 cm fliser</li>
+                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Premium finish</li>
+                </ul>
+                
+                <a href="#kontakt" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-colors">
+                    Bestil denne model
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fordele -->
+    <div id="fordele" class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold text-gray-900">Hvorfor vælge Flise TV Bord?</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-3xl">🛠️</span>
+                    </div>
+                    <h4 class="font-semibold text-xl mb-2">Ægte murer-kvalitet</h4>
+                    <p class="text-gray-600">Bygget med armeringsnet, fleksibel klæber og professionel fugning – holder i mange år.</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-3xl">🎨</span>
+                    </div>
+                    <h4 class="font-semibold text-xl mb-2">Custom muligheder</h4>
+                    <p class="text-gray-600">Vælg størrelse, flisemønster og finish. Vi laver det præcis som du vil have det.</p>
+                </div>
+                <div class="text-center">
+                    <div class="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-3xl">🇩🇰</span>
+                    </div>
+                    <h4 class="font-semibold text-xl mb-2">Dansk håndværk</h4>
+                    <p class="text-gray-600">Håndlavet i Danmark af en erfaren murer med mange års erfaring.</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Galleri -->
-    <div id="galleri" class="bg-white py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <h3 class="text-3xl font-bold text-center mb-10">Galleri – Se eksempler</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="aspect-square bg-gray-200 rounded-xl overflow-hidden">
-                    <img src="https://picsum.photos/id/1015/600/600" alt="Prototype TV bord" class="w-full h-full object-cover gallery-img">
-                </div>
-                <div class="aspect-square bg-gray-200 rounded-xl overflow-hidden">
-                    <img src="https://picsum.photos/id/160/600/600" alt="Flise detalje" class="w-full h-full object-cover gallery-img">
-                </div>
-                <div class="aspect-square bg-gray-200 rounded-xl overflow-hidden">
-                    <img src="https://picsum.photos/id/201/600/600" alt="I stue" class="w-full h-full object-cover gallery-img">
-                </div>
-                <!-- Tilføj flere billeder senere -->
-            </div>
-            <p class="text-center text-sm text-gray-500 mt-4">Billeder erstattes med dine rigtige prototyper</p>
+    <div id="galleri" class="max-w-7xl mx-auto px-4 py-16">
+        <div class="text-center mb-10">
+            <h3 class="text-4xl font-bold text-gray-900">Galleri</h3>
+            <p class="text-xl text-gray-600 mt-2">Se eksempler på vores håndværk</p>
         </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div>
+                <img src="https://picsum.photos/id/1015/600/600" alt="Færdigt TV bord i stue" class="w-full aspect-square object-cover rounded-2xl gallery-img">
+                <p class="text-center text-sm mt-2 text-gray-600">Standard 130 cm i moderne stue</p>
+            </div>
+            <div>
+                <img src="https://picsum.photos/id/160/600/600" alt="Flise detalje" class="w-full aspect-square object-cover rounded-2xl gallery-img">
+                <p class="text-center text-sm mt-2 text-gray-600">Nærbillede af fliser og fuge</p>
+            </div>
+            <div>
+                <img src="https://picsum.photos/id/201/600/600" alt="Hylde med opbevaring" class="w-full aspect-square object-cover rounded-2xl gallery-img">
+                <p class="text-center text-sm mt-2 text-gray-600">Praktisk åben hylde</p>
+            </div>
+            <div>
+                <img src="https://picsum.photos/id/29/600/600" alt="Træ og fliser detalje" class="w-full aspect-square object-cover rounded-2xl gallery-img">
+                <p class="text-center text-sm mt-2 text-gray-600">Kombination af træ og fliser</p>
+            </div>
+        </div>
+        
+        <p class="text-center text-sm text-gray-500 mt-6">Billederne erstattes med dine rigtige prototyper</p>
     </div>
 
     <!-- Kontakt -->
-    <div id="kontakt" class="max-w-7xl mx-auto px-4 py-16 text-center">
-        <h3 class="text-3xl font-bold mb-4">Klar til at bestille?</h3>
-        <p class="text-xl text-gray-600 mb-8">Skriv til os for tilbud på standard eller custom model.</p>
-        <a href="mailto:matt@graverholtmurerfirma.dk" class="inline-block bg-indigo-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-700">Kontakt mig</a>
+    <div id="kontakt" class="bg-white py-16">
+        <div class="max-w-2xl mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold text-gray-900 mb-4">Klar til dit nye TV-bord?</h3>
+            <p class="text-xl text-gray-600 mb-8">Skriv til os for et uforpligtende tilbud – både på standardmodeller og custom løsninger.</p>
+            
+            <div class="bg-gray-50 rounded-2xl p-8 text-left">
+                <form action="mailto:matt@graverholtmurerfirma.dk" method="post" enctype="text/plain">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Navn</label>
+                            <input type="text" name="navn" class="w-full border border-gray-300 rounded-lg px-4 py-3" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Telefon</label>
+                            <input type="tel" name="telefon" class="w-full border border-gray-300 rounded-lg px-4 py-3" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-1">Ønsket model / størrelse</label>
+                        <input type="text" name="model" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="F.eks. Standard 130 cm eller custom">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-1">Besked</label>
+                        <textarea name="besked" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Skriv gerne dine ønsker her..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-semibold text-lg transition-colors">
+                        Send forespørgsel
+                    </button>
+                </form>
+                <p class="text-xs text-gray-500 mt-4">Vi svarer normalt inden for 1-2 hverdage.</p>
+            </div>
+        </div>
     </div>
 
-    <footer class="bg-gray-900 text-white text-center py-6 text-sm">
-        © 2026 Flise TV Bord • Håndlavet af Matt Madsen
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="font-semibold mb-1">Flise TV Bord</p>
+            <p class="text-sm text-gray-400">Håndlavet af Matt Madsen • Syddjurs, Danmark</p>
+            <p class="text-xs text-gray-500 mt-4">© 2026 Alle rettigheder forbeholdes</p>
+        </div>
     </footer>
 </body>
 </html>
