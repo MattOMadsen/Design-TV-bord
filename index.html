@@ -1,305 +1,620 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flise TV Bord • Håndlavet kvalitet</title>
+    <meta name="description" content="Håndlavede TV-borde med ægte flisekvalitet. Bygget af erfaren murer i Syddjurs. Standardmodeller og custom løsninger.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF7F2',
+                        stone: '#1C1917',
+                        tile: '#0D6B5C',
+                        'tile-dark': '#084A40',
+                        'tile-light': '#E8F4F1',
+                        gold: '#B8954A',
+                        'gold-light': '#F5EDD8',
+                        warm: '#78716C',
+                    },
+                    fontFamily: {
+                        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        soft: '0 4px 24px -4px rgba(28, 25, 23, 0.08)',
+                        card: '0 8px 32px -8px rgba(28, 25, 23, 0.12)',
+                        glow: '0 0 0 1px rgba(184, 149, 74, 0.15), 0 12px 40px -12px rgba(13, 107, 92, 0.25)',
+                    },
+                },
+            },
+        };
+    </script>
     <style>
-        .gallery-img { transition: transform 0.3s ease; }
-        .gallery-img:hover { transform: scale(1.05); }
-        .product-card { transition: all 0.3s ease; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        body { font-family: 'DM Sans', system-ui, sans-serif; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-bg {
+            background-image:
+                linear-gradient(105deg, rgba(28, 25, 23, 0.88) 0%, rgba(28, 25, 23, 0.55) 45%, rgba(28, 25, 23, 0.25) 100%),
+                url('images/grok_image_1782290065058.jpg');
+            background-size: cover;
+            background-position: center 40%;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 1rem;
+            cursor: zoom-in;
+            position: relative;
+        }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(28, 25, 23, 0.35) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item img {
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .gallery-item:hover img { transform: scale(1.06); }
+
+        .product-card { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px -12px rgba(28, 25, 23, 0.18);
+        }
+
+        .process-line {
+            background: linear-gradient(90deg, #0D6B5C 0%, #B8954A 50%, #0D6B5C 100%);
+            height: 2px;
+        }
+
+        .nav-scrolled {
+            background: rgba(250, 247, 242, 0.92) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(28, 25, 23, 0.06), 0 4px 20px -4px rgba(28, 25, 23, 0.08);
+        }
+
+        .input-field {
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #0D6B5C;
+            box-shadow: 0 0 0 3px rgba(13, 107, 92, 0.12);
+        }
+
+        #lightbox.open {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-label {
+            letter-spacing: 0.2em;
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-cream text-stone antialiased">
+
     <!-- Navbar -->
-    <nav class="bg-white shadow sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-gray-900">Flise TV Bord</h1>
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex justify-between h-18 items-center py-4">
+                <a href="#" class="group flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-tile flex items-center justify-center text-white text-sm font-bold tracking-tight">FT</div>
+                    <div>
+                        <p class="font-display text-xl font-semibold text-stone leading-none">Flise TV Bord</p>
+                        <p class="text-[10px] uppercase tracking-[0.18em] text-warm mt-0.5">Håndlavet kvalitet</p>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#produkter" class="text-sm font-medium text-warm hover:text-tile transition-colors">Produkter</a>
+                    <a href="#fordele" class="text-sm font-medium text-warm hover:text-tile transition-colors">Fordele</a>
+                    <a href="#proces" class="text-sm font-medium text-warm hover:text-tile transition-colors">Proces</a>
+                    <a href="#galleri" class="text-sm font-medium text-warm hover:text-tile transition-colors">Galleri</a>
+                    <a href="#kontakt" class="inline-flex items-center gap-2 bg-tile hover:bg-tile-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+                        Få tilbud
+                    </a>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#produkter" class="text-gray-600 hover:text-gray-900 font-medium">Produkter</a>
-                    <a href="#fordele" class="text-gray-600 hover:text-gray-900 font-medium">Fordele</a>
-                    <a href="#proces" class="text-gray-600 hover:text-gray-900 font-medium">Hvordan det laves</a>
-                    <a href="#galleri" class="text-gray-600 hover:text-gray-900 font-medium">Galleri</a>
-                    <a href="#kontakt" class="text-gray-600 hover:text-gray-900 font-medium">Kontakt</a>
-                </div>
-                <div class="md:hidden">
-                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-600">
-                        ☰
-                    </button>
-                </div>
+
+                <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-stone/5 transition-colors" aria-label="Åbn menu">
+                    <svg id="menu-icon" class="w-5 h-5 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
             </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
-            <a href="#produkter" class="block py-2 text-gray-600">Produkter</a>
-            <a href="#fordele" class="block py-2 text-gray-600">Fordele</a>
-            <a href="#proces" class="block py-2 text-gray-600">Hvordan det laves</a>
-            <a href="#galleri" class="block py-2 text-gray-600">Galleri</a>
-            <a href="#kontakt" class="block py-2 text-gray-600">Kontakt</a>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-stone/8 bg-cream px-5 pb-5">
+            <a href="#produkter" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Produkter</a>
+            <a href="#fordele" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Fordele</a>
+            <a href="#proces" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Proces</a>
+            <a href="#galleri" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Galleri</a>
+            <a href="#kontakt" class="mobile-link block mt-3 text-center bg-tile text-white font-semibold py-3 rounded-full">Få tilbud</a>
         </div>
     </nav>
 
     <!-- Hero -->
-    <div class="bg-white">
-        <div class="max-w-7xl mx-auto px-4 py-20 text-center">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
+    <header class="hero-bg min-h-[92vh] flex items-end relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-stone/60 via-transparent to-transparent pointer-events-none"></div>
+        <div class="relative w-full max-w-6xl mx-auto px-5 sm:px-8 pb-16 md:pb-24 pt-32">
+            <div class="max-w-2xl">
+                <p class="section-label text-xs font-semibold uppercase text-gold-light/90 mb-4 reveal">Graverholt Murerfirma · Syddjurs</p>
+                <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-white leading-[1.05] tracking-tight reveal" style="transition-delay: 0.1s">
                     Håndlavede TV-borde<br>
-                    <span class="text-indigo-600">med ægte flisekvalitet</span>
-                </h2>
-                <p class="mt-6 text-xl text-gray-600">Bygget af en erfaren murer. Designet til dit hjem. Med mulighed for custom løsninger.</p>
-                
-                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#produkter" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors">
-                        Se vores modeller
+                    <span class="italic text-gold-light">med ægte flisekvalitet</span>
+                </h1>
+                <p class="mt-6 text-lg text-white/80 max-w-lg leading-relaxed reveal" style="transition-delay: 0.2s">
+                    Bygget af en erfaren murer med armeringsnet, fleksibel klæber og professionel fugning. Standardmodeller og fuld custom.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 reveal" style="transition-delay: 0.3s">
+                    <a href="#produkter" class="inline-flex justify-center items-center bg-tile hover:bg-tile-dark text-white px-8 py-4 rounded-full font-semibold transition-colors shadow-glow">
+                        Se modeller & priser
                     </a>
-                    <a href="#kontakt" class="inline-block border-2 border-gray-300 hover:bg-gray-100 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg transition-colors">
-                        Få et tilbud
+                    <a href="#galleri" class="inline-flex justify-center items-center border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold transition-colors backdrop-blur-sm">
+                        Se galleri
                     </a>
                 </div>
-                <p class="mt-4 text-sm text-gray-500">Launch-priser – spar op til 15%</p>
+            </div>
+
+            <!-- Trust bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 reveal" style="transition-delay: 0.4s">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">10×10 cm</p>
+                    <p class="text-sm text-white/70 mt-1">Fliser på top</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">100%</p>
+                    <p class="text-sm text-white/70 mt-1">Håndlavet i DK</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">Custom</p>
+                    <p class="text-sm text-white/70 mt-1">Dit design, vores håndværk</p>
+                </div>
+                <div class="bg-gold/20 backdrop-blur-md rounded-2xl px-5 py-4 border border-gold/30">
+                    <p class="font-display text-2xl font-semibold text-gold-light">−15%</p>
+                    <p class="text-sm text-white/70 mt-1">Launch-priser nu</p>
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
     <!-- Produkter -->
-    <div id="produkter" class="max-w-7xl mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-            <h3 class="text-4xl font-bold text-gray-900">Vores standardmodeller</h3>
-            <p class="mt-3 text-xl text-gray-600">Alle med åben hylde og 10x10 cm fliser på toppen</p>
+    <section id="produkter" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Produkter</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone">Vores standardmodeller</h2>
+                <p class="mt-4 text-warm text-lg">Alle med åben hylde og 10×10 cm fliser på toppen. Klar til levering efter bestilling.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Lille -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-soft border border-stone/5 reveal">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/grok_image_1782289288869.jpg" alt="Lille TV-bord 110 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-tile-light text-tile text-xs font-semibold uppercase tracking-wide rounded-full">Lille</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">110 cm</h3>
+                        <p class="text-warm mt-2">Perfekt til mindre stuer eller soveværelse</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-stone">4.500 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 5.000 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Åben hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Håndlavet i krydsfiner</li>
+                        </ul>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center border-2 border-stone/10 hover:border-tile hover:text-tile text-stone py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Standard -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-glow border-2 border-tile/20 relative md:-mt-4 reveal" style="transition-delay: 0.1s">
+                    <div class="absolute top-4 right-4 z-10 bg-tile text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Mest populær</div>
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/grok_image_1782290065058.jpg" alt="Standard TV-bord 130 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-gold-light text-gold text-xs font-semibold uppercase tracking-wide rounded-full">Standard</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">130 cm</h3>
+                        <p class="text-warm mt-2">Den perfekte størrelse til de fleste stuer</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-tile">5.625 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 6.250 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Åben hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser på top</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Armeringsnet for holdbarhed</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Håndlavet af murer</li>
+                        </ul>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center bg-tile hover:bg-tile-dark text-white py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Stor -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-soft border border-stone/5 reveal" style="transition-delay: 0.2s">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/grok_image_1782290118818.jpg" alt="Stor TV-bord 160 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-gold-light text-gold text-xs font-semibold uppercase tracking-wide rounded-full">Stor</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">160 cm</h3>
+                        <p class="text-warm mt-2">Til store stuer med masser af opbevaring</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-stone">6.750 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 7.500 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Ekstra stor hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Premium finish</li>
+                        </ul>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center border-2 border-stone/10 hover:border-tile hover:text-tile text-stone py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <p class="text-center text-sm text-warm mt-10 reveal">Custom løsninger: materialer + 400 kr/time + 20% margin. <a href="#kontakt" class="text-tile font-medium hover:underline">Kontakt os</a> for et tilbud.</p>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Lille -->
-            <div class="product-card bg-white rounded-2xl shadow p-8 border">
-                <div class="mb-6">
-                    <span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">Lille</span>
-                </div>
-                <h4 class="text-2xl font-bold mb-2">110 cm</h4>
-                <p class="text-gray-600 mb-6">Perfekt til mindre stuer eller soveværelse</p>
-                
-                <div class="mb-6">
-                    <div class="flex items-baseline">
-                        <span class="text-4xl font-bold">4.500 kr</span>
-                        <span class="ml-2 text-sm text-gray-500">inkl. moms</span>
-                    </div>
-                    <p class="text-sm text-gray-500 line-through">Normalpris 5.000 kr</p>
-                </div>
-                
-                <ul class="text-sm text-gray-600 space-y-2 mb-8">
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Åben hylde</li>
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 10x10 cm fliser</li>
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Håndlavet i krydsfiner</li>
-                </ul>
-                
-                <a href="#kontakt" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-colors">
-                    Bestil denne model
-                </a>
-            </div>
-
-            <!-- Standard (populær) -->
-            <div class="product-card bg-white rounded-2xl shadow p-8 border-2 border-indigo-600 relative">
-                <div class="absolute -top-3 right-6 bg-indigo-600 text-white text-xs font-bold px-4 py-1 rounded-full">MEST POPULÆR</div>
-                
-                <div class="mb-6">
-                    <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 text-sm font-medium rounded-full">Standard</span>
-                </div>
-                <h4 class="text-2xl font-bold mb-2">130 cm</h4>
-                <p class="text-gray-600 mb-6">Den perfekte størrelse til de fleste stuer</p>
-                
-                <div class="mb-6">
-                    <div class="flex items-baseline">
-                        <span class="text-4xl font-bold">5.625 kr</span>
-                        <span class="ml-2 text-sm text-gray-500">inkl. moms</span>
-                    </div>
-                    <p class="text-sm text-gray-500 line-through">Normalpris 6.250 kr</p>
-                </div>
-                
-                <ul class="text-sm text-gray-600 space-y-2 mb-8">
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Åben hylde</li>
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 10x10 cm fliser på top</li>
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Armeringsnet for ekstra holdbarhed</li>
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Håndlavet af murer</li>
-                </ul>
-                
-                <a href="#kontakt" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-colors">
-                    Bestil denne model
-                </a>
-            </div>
-
-            <!-- Stor -->
-            <div class="product-card bg-white rounded-2xl shadow p-8 border">
-                <div class="mb-6">
-                    <span class="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-sm font-medium rounded-full">Stor</span>
-                </div>
-                <h4 class="text-2xl font-bold mb-2">160 cm</h4>
-                <p class="text-gray-600 mb-6">Til store stuer eller med masser af opbevaring</p>
-                
-                <div class="mb-6">
-                    <div class="flex items-baseline">
-                        <span class="text-4xl font-bold">6.750 kr</span>
-                        <span class="ml-2 text-sm text-gray-500">inkl. moms</span>
-                    </div>
-                    <p class="text-sm text-gray-500 line-through">Normalpris 7.500 kr</p>
-                </div>
-                
-                <ul class="text-sm text-gray-600 space-y-2 mb-8">
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Ekstra stor hylde</li>
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 10x10 cm fliser</li>
-                    <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Premium finish</li>
-                </ul>
-                
-                <a href="#kontakt" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-semibold transition-colors">
-                    Bestil denne model
-                </a>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!-- Fordele -->
-    <div id="fordele" class="bg-white py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h3 class="text-4xl font-bold text-gray-900">Hvorfor vælge Flise TV Bord?</h3>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-3xl">🛠️</span>
-                    </div>
-                    <h4 class="font-semibold text-xl mb-2">Ægte murer-kvalitet</h4>
-                    <p class="text-gray-600">Bygget med armeringsnet, fleksibel klæber og professionel fugning – holder i mange år.</p>
+    <section id="fordele" class="py-20 md:py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal">
+                    <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Fordele</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone leading-tight">Hvorfor vælge<br>Flise TV Bord?</h2>
+                    <p class="mt-5 text-warm text-lg leading-relaxed">Vi kombinerer ægte murerfaglighed med moderne design — så du får et møbel der både ser fantastisk ud og holder i mange år.</p>
+                    <a href="#proces" class="inline-flex items-center gap-2 mt-8 text-tile font-semibold hover:gap-3 transition-all">
+                        Se hvordan det laves
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
                 </div>
-                <div class="text-center">
-                    <div class="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-3xl">🎨</span>
-                    </div>
-                    <h4 class="font-semibold text-xl mb-2">Custom muligheder</h4>
-                    <p class="text-gray-600">Vælg størrelse, flisemønster og finish. Vi laver det præcist som du vil have det.</p>
-                </div>
-                <div class="text-center">
-                    <div class="mx-auto w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-3xl">🇩🇰</span>
-                    </div>
-                    <h4 class="font-semibold text-xl mb-2">Dansk håndværk</h4>
-                    <p class="text-gray-600">Håndlavet i Danmark af en erfaren murer med mange års erfaring.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Proces / Hvordan det laves -->
-    <div id="proces" class="max-w-7xl mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-            <h3 class="text-4xl font-bold text-gray-900">Hvordan det laves</h3>
-            <p class="text-xl text-gray-600 mt-2">Ægte murer-kvalitet fra start til slut</p>
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div class="bg-cream rounded-2xl p-6 reveal">
+                        <div class="w-11 h-11 rounded-xl bg-tile-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Ægte murer-kvalitet</h3>
+                        <p class="text-sm text-warm leading-relaxed">Armeringsnet, fleksibel klæber og professionel fugning — bygget til at holde.</p>
+                    </div>
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.1s">
+                        <div class="w-11 h-11 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0 0 .5-1.5 1.5-2.5s2.5-1.5 2.5-1.5"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Custom muligheder</h3>
+                        <p class="text-sm text-warm leading-relaxed">Vælg størrelse, flisemønster og finish. Vi laver det præcis som du ønsker.</p>
+                    </div>
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.2s">
+                        <div class="w-11 h-11 rounded-xl bg-tile-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Dansk håndværk</h3>
+                        <p class="text-sm text-warm leading-relaxed">Håndlavet i Syddjurs af en erfaren murer med mange års erfaring.</p>
+                    </div>
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.3s">
+                        <div class="w-11 h-11 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">God værdi</h3>
+                        <p class="text-sm text-warm leading-relaxed">Designermøbel-kvalitet til en brøkdel af prisen. Launch-priser sparer dig op til 15%.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white rounded-2xl p-6 shadow">
-                <div class="text-4xl mb-4">1</div>
-                <h4 class="font-semibold text-xl mb-2">Design & Mål</h4>
-                <p class="text-gray-600">Vi aftaler størrelse, flisetype og eventuelle custom-ønsker.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow">
-                <div class="text-4xl mb-4">2</div>
-                <h4 class="font-semibold text-xl mb-2">Bygning i krydsfiner</h4>
-                <p class="text-gray-600">Solid kassekonstruktion med åben hylde i midten – bygget til at holde.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow">
-                <div class="text-4xl mb-4">3</div>
-                <h4 class="font-semibold text-xl mb-2">Fliseopsætning</h4>
-                <p class="text-gray-600">Primer + armeringsnet + fleksibel klæber + 10x10 cm fliser lagt præcist.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow">
-                <div class="text-4xl mb-4">4</div>
-                <h4 class="font-semibold text-xl mb-2">Fuge & Finish</h4>
-                <p class="text-gray-600">Professionel fleksibel fuge + finish på trædelene. Klar til levering.</p>
-            </div>
-        </div>
-    </div>
+    </section>
 
-    <!-- Galleri (midlertidigt med eksisterende billeder) -->
-    <div id="galleri" class="bg-white py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-10">
-                <h3 class="text-4xl font-bold text-gray-900">Galleri</h3>
-                <p class="text-xl text-gray-600 mt-2">Eksempler på flisebelagte møbler (midlertidige billeder)</p>
+    <!-- Proces -->
+    <section id="proces" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Proces</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone">Hvordan det laves</h2>
+                <p class="mt-4 text-warm text-lg">Ægte murer-kvalitet fra første snit til sidste fuge</p>
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div>
-                    <img src="grok_image_1782289148012.jpg" alt="Flise TV bord eksempel" class="w-full aspect-square object-cover rounded-2xl gallery-img">
-                    <p class="text-center text-sm mt-2 text-gray-600">Flise TV-bord / lowboard</p>
+
+            <div class="hidden lg:block process-line max-w-4xl mx-auto mb-0 -mt-4 relative top-8 z-0 reveal"></div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">1</div>
+                    <h3 class="font-semibold text-lg mb-2">Design & mål</h3>
+                    <p class="text-sm text-warm leading-relaxed">Vi aftaler størrelse, flisetype og eventuelle custom-ønsker.</p>
                 </div>
-                <div>
-                    <img src="grok_image_1782289167196.jpg" alt="Flise detalje" class="w-full aspect-square object-cover rounded-2xl gallery-img">
-                    <p class="text-center text-sm mt-2 text-gray-600">Nærbillede af fliser</p>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.1s">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">2</div>
+                    <h3 class="font-semibold text-lg mb-2">Bygning</h3>
+                    <p class="text-sm text-warm leading-relaxed">Solid kasse i krydsfiner med åben hylde — bygget til at holde.</p>
                 </div>
-                <div>
-                    <img src="grok_image_1782289184309.jpg" alt="TV bord med hylde" class="w-full aspect-square object-cover rounded-2xl gallery-img">
-                    <p class="text-center text-sm mt-2 text-gray-600">TV-bord med åben hylde</p>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.2s">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">3</div>
+                    <h3 class="font-semibold text-lg mb-2">Fliseopsætning</h3>
+                    <p class="text-sm text-warm leading-relaxed">Primer, armeringsnet, fleksibel klæber og 10×10 cm fliser lagt præcist.</p>
                 </div>
-                <div>
-                    <img src="grok_image_1782289288869.jpg" alt="Flise møbel" class="w-full aspect-square object-cover rounded-2xl gallery-img">
-                    <p class="text-center text-sm mt-2 text-gray-600">Håndlavet flise-møbel</p>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.3s">
+                    <div class="w-10 h-10 rounded-full bg-gold text-white font-display text-xl font-semibold flex items-center justify-center mb-5">4</div>
+                    <h3 class="font-semibold text-lg mb-2">Fuge & finish</h3>
+                    <p class="text-sm text-warm leading-relaxed">Professionel fleksibel fuge og finish på trædelene. Klar til levering.</p>
                 </div>
             </div>
-            
-            <p class="text-center text-sm text-gray-500 mt-6">Når du uploader dine rigtige billeder, erstatter vi disse</p>
         </div>
-    </div>
+    </section>
+
+    <!-- Galleri -->
+    <section id="galleri" class="py-20 md:py-28 bg-stone">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-gold mb-3">Galleri</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-white">Inspiration & eksempler</h2>
+                <p class="mt-4 text-white/60 text-lg">Klik på et billede for at se det i fuld størrelse</p>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
+        </div>
+    </section>
 
     <!-- Kontakt -->
-    <div id="kontakt" class="max-w-7xl mx-auto px-4 py-16">
-        <div class="max-w-2xl mx-auto text-center">
-            <h3 class="text-4xl font-bold text-gray-900 mb-4">Klar til dit nye TV-bord?</h3>
-            <p class="text-xl text-gray-600 mb-8">Skriv til os for et uforpligtende tilbud – både på standardmodeller og custom løsninger.</p>
-            
-            <div class="bg-white rounded-2xl shadow p-8 text-left">
-                <form action="mailto:matt@graverholtmurerfirma.dk" method="post" enctype="text/plain">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Navn</label>
-                            <input type="text" name="navn" class="w-full border border-gray-300 rounded-lg px-4 py-3" required>
+    <section id="kontakt" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <div class="reveal">
+                    <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Kontakt</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone leading-tight">Klar til dit<br>nye TV-bord?</h2>
+                    <p class="mt-5 text-warm text-lg leading-relaxed">Skriv til os for et uforpligtende tilbud — både på standardmodeller og custom løsninger.</p>
+
+                    <div class="mt-10 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-tile-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">E-mail</p>
+                                <a href="mailto:matt@graverholtmurerfirma.dk" class="text-tile hover:underline">matt@graverholtmurerfirma.dk</a>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Telefon</label>
-                            <input type="tel" name="telefon" class="w-full border border-gray-300 rounded-lg px-4 py-3" required>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-tile-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">Lokation</p>
+                                <p class="text-warm">Syddjurs, Danmark</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">Svartid</p>
+                                <p class="text-warm">Normalt inden for 1–2 hverdage</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1">Ønsket model / størrelse</label>
-                        <input type="text" name="model" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="F.eks. Standard 130 cm eller custom">
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium mb-1">Besked</label>
-                        <textarea name="besked" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3" placeholder="Skriv gerne dine ønsker her..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-semibold text-lg transition-colors">
-                        Send forespørgsel
-                    </button>
-                </form>
-                <p class="text-xs text-gray-500 mt-4 text-center">Vi svarer normalt inden for 1-2 hverdage.</p>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-card p-8 md:p-10 border border-stone/5 reveal" style="transition-delay: 0.15s">
+                    <form action="mailto:matt@graverholtmurerfirma.dk" method="post" enctype="text/plain">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label class="block text-sm font-medium text-stone mb-2">Navn</label>
+                                <input type="text" name="navn" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone mb-2">Telefon</label>
+                                <input type="tel" name="telefon" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="block text-sm font-medium text-stone mb-2">Ønsket model / størrelse</label>
+                            <input type="text" name="model" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" placeholder="F.eks. Standard 130 cm eller custom">
+                        </div>
+
+                        <div class="mb-7">
+                            <label class="block text-sm font-medium text-stone mb-2">Besked</label>
+                            <textarea name="besked" rows="4" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50 resize-none" placeholder="Skriv gerne dine ønsker her..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-tile hover:bg-tile-dark text-white py-4 rounded-full font-semibold text-lg transition-colors">
+                            Send forespørgsel
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-stone/95 items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true">
+        <button id="lightbox-close" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Luk">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <button id="lightbox-prev" class="absolute left-4 md:left-8 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Forrige">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 md:right-8 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Næste">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+        <p id="lightbox-counter" class="absolute bottom-6 text-white/60 text-sm"></p>
     </div>
 
-    <footer class="bg-gray-900 text-white py-10">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="font-semibold mb-1">Flise TV Bord</p>
-            <p class="text-sm text-gray-400">Håndlavet af Matt Madsen • Syddjurs, Danmark</p>
-            <p class="text-xs text-gray-500 mt-4">© 2026 Alle rettigheder forbeholdes</p>
+    <footer class="bg-stone text-white py-14">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <p class="font-display text-2xl font-semibold">Flise TV Bord</p>
+                    <p class="text-sm text-white/50 mt-1">Håndlavet af Matt Madsen · Graverholt Murerfirma</p>
+                </div>
+                <div class="flex gap-6 text-sm text-white/50">
+                    <a href="#produkter" class="hover:text-white transition-colors">Produkter</a>
+                    <a href="#galleri" class="hover:text-white transition-colors">Galleri</a>
+                    <a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-10 pt-8 text-center text-xs text-white/30">
+                © 2026 Flise TV Bord · Alle rettigheder forbeholdes
+            </div>
         </div>
     </footer>
+
+    <script>
+        const galleryImages = [
+            'grok_image_1782289167196.jpg',
+            'grok_image_1782289184309.jpg',
+            'grok_image_1782289288869.jpg',
+            'grok_image_1782289365009.jpg',
+            'grok_image_1782289602426.jpg',
+            'grok_image_1782289849838.jpg',
+            'grok_image_1782289959653.jpg',
+            'grok_image_1782289978443.jpg',
+            'grok_image_1782290023464.jpg',
+            'grok_image_1782290046887.jpg',
+            'grok_image_1782290065058.jpg',
+            'grok_image_1782290095843.jpg',
+            'grok_image_1782290118818.jpg',
+            'grok_image_1782290149945.jpg',
+            'grok_image_1782290171933.jpg',
+            'grok_image_1782290206888.jpg',
+            'grok_image_1782290319586.jpg'
+        ];
+
+        const galleryGrid = document.getElementById('gallery-grid');
+        let currentLightboxIndex = 0;
+
+        galleryImages.forEach((filename, index) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'gallery-item aspect-square reveal';
+            item.style.transitionDelay = `${(index % 8) * 0.05}s`;
+            item.innerHTML = `<img src="images/${filename}" alt="Flise TV-bord eksempel ${index + 1}" class="w-full h-full object-cover" loading="lazy">`;
+            item.addEventListener('click', () => openLightbox(index));
+            galleryGrid.appendChild(item);
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightbox();
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            const filename = galleryImages[currentLightboxIndex];
+            lightboxImg.src = `images/${filename}`;
+            lightboxImg.alt = `Flise TV-bord eksempel ${currentLightboxIndex + 1}`;
+            lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${galleryImages.length}`;
+        }
+
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox-prev').addEventListener('click', () => {
+            currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightbox();
+        });
+        document.getElementById('lightbox-next').addEventListener('click', () => {
+            currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+            updateLightbox();
+        });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+            if (e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('nav-scrolled', window.scrollY > 40);
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            if (!el.style.transitionDelay) el.style.transitionDelay = `${Math.min(i * 0.05, 0.4)}s`;
+        });
+    </script>
 </body>
 </html>
