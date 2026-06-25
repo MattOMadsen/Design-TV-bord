@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="da" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okker Design • Håndlavede TV-borde med fliser & LED</title>
+    <meta name="description" content="Håndlavede design TV-borde med 10×10 cm fliser på toppen og mulighed for indbygget app-styret LED-belysning. Lavet i Danmark.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF7F2',
+                        stone: '#1C1917',
+                        tile: '#0D6B5C',
+                        'tile-dark': '#084A40',
+                        'tile-light': '#E8F4F1',
+                        gold: '#B8954A',
+                        'gold-light': '#F5EDD8',
+                        warm: '#78716C',
+                    },
+                    fontFamily: {
+                        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        soft: '0 4px 24px -4px rgba(28, 25, 23, 0.08)',
+                        card: '0 8px 32px -8px rgba(28, 25, 23, 0.12)',
+                        glow: '0 0 0 1px rgba(184, 149, 74, 0.15), 0 12px 40px -12px rgba(13, 107, 92, 0.25)',
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-cream text-stone antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex justify-between h-18 items-center py-4">
+                <a href="#" class="group flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-tile flex items-center justify-center text-white text-sm font-bold tracking-tight">OD</div>
+                    <div>
+                        <p class="font-display text-xl font-semibold text-stone leading-none">Okker Design</p>
+                        <p class="text-[10px] uppercase tracking-[0.18em] text-warm mt-0.5">Håndlavet kvalitet</p>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#produkter" class="text-sm font-medium text-warm hover:text-tile transition-colors">Produkter</a>
+                    <a href="#fordele" class="text-sm font-medium text-warm hover:text-tile transition-colors">Fordele</a>
+                    <a href="#proces" class="text-sm font-medium text-warm hover:text-tile transition-colors">Proces</a>
+                    <a href="#galleri" class="text-sm font-medium text-warm hover:text-tile transition-colors">Galleri</a>
+                    <a href="#kontakt" class="inline-flex items-center gap-2 bg-tile hover:bg-tile-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+                        Få tilbud
+                    </a>
+                </div>
+
+                <button id="menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-stone/5 transition-colors" aria-label="Åbn menu">
+                    <svg id="menu-icon" class="w-5 h-5 text-stone" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-stone/8 bg-cream px-5 pb-5">
+            <a href="#produkter" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Produkter</a>
+            <a href="#fordele" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Fordele</a>
+            <a href="#proces" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Proces</a>
+            <a href="#galleri" class="mobile-link block py-3 text-stone font-medium border-b border-stone/6">Galleri</a>
+            <a href="#kontakt" class="mobile-link block mt-3 text-center bg-tile text-white font-semibold py-3 rounded-full">Få tilbud</a>
+        </div>
+    </nav>
+
+    <!-- @build:partials-start -->
+    <!-- @build:partials-end -->
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-stone/95 items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true">
+        <button id="lightbox-close" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Luk">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <button id="lightbox-prev" class="absolute left-4 md:left-8 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Forrige">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 md:right-8 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors" aria-label="Næste">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+        <p id="lightbox-counter" class="absolute bottom-6 text-white/60 text-sm"></p>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

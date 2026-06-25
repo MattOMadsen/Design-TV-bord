@@ -79,8 +79,372 @@
         </div>
     </nav>
 
-    <!-- @build:partials-start -->
-    <!-- @build:partials-end -->
+<!-- Hero -->
+    <header class="hero-bg min-h-[92vh] flex items-end relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-stone/60 via-transparent to-transparent pointer-events-none"></div>
+        <div class="relative w-full max-w-6xl mx-auto px-5 sm:px-8 pb-16 md:pb-24 pt-32">
+            <div class="max-w-2xl">
+                <p class="section-label text-xs font-semibold uppercase text-gold-light/90 mb-4 reveal">Okker Design · Danmark</p>
+                <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-semibold text-white leading-[1.05] tracking-tight reveal" style="transition-delay: 0.1s">
+                    Håndlavede TV-borde<br>
+                    <span class="italic text-gold-light">med fliser & valgfri LED</span>
+                </h1>
+                <p class="mt-6 text-lg text-white/80 max-w-lg leading-relaxed reveal" style="transition-delay: 0.2s">
+                    Skabt med fokus på tidløst design og høj kvalitet. Standardmodeller og custom med mulighed for indbygget app-styret LED-belysning.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 reveal" style="transition-delay: 0.3s">
+                    <a href="#produkter" class="inline-flex justify-center items-center bg-tile hover:bg-tile-dark text-white px-8 py-4 rounded-full font-semibold transition-colors shadow-glow">
+                        Se modeller & priser
+                    </a>
+                    <a href="#galleri" class="inline-flex justify-center items-center border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold transition-colors backdrop-blur-sm">
+                        Se galleri
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trust bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 reveal" style="transition-delay: 0.4s">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">10×10 cm</p>
+                    <p class="text-sm text-white/70 mt-1">Fliser på top</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">100%</p>
+                    <p class="text-sm text-white/70 mt-1">Håndlavet i DK</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/10">
+                    <p class="font-display text-2xl font-semibold text-white">Custom</p>
+                    <p class="text-sm text-white/70 mt-1">Dit design, vores håndværk</p>
+                </div>
+                <div class="bg-gold/20 backdrop-blur-md rounded-2xl px-5 py-4 border border-gold/30">
+                    <p class="font-display text-2xl font-semibold text-gold-light">−15%</p>
+                    <p class="text-sm text-white/70 mt-1">Launch-priser nu</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+<!-- Produkter -->
+    <section id="produkter" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Produkter</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone">Vores standardmodeller</h2>
+                <p class="mt-4 text-warm text-lg">Alle med åben hylde og 10×10 cm fliser på toppen. Klar til levering efter bestilling.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Lille -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-soft border border-stone/5 reveal">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/model-lille-110cm.jpg" alt="Lille TV-bord 110 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-tile-light text-tile text-xs font-semibold uppercase tracking-wide rounded-full">Lille</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">110 cm</h3>
+                        <p class="text-warm mt-2">Perfekt til mindre stuer eller soveværelse</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-stone">5.950 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 6.950 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Åben hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Håndlavet i krydsfiner</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Indbygget app-styret LED (tilvalg +1.995 kr)</li>
+                        </ul>
+
+                        <div class="mt-6 p-4 bg-cream rounded-xl border border-stone/8">
+                            <p class="text-sm font-semibold text-stone">Estimeret vægt: 50 kg</p>
+                            <p class="text-xs text-warm mt-1">Baseret på materialer • kan variere ±5 kg</p>
+                        </div>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center border-2 border-stone/10 hover:border-tile hover:text-tile text-stone py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Standard -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-glow border-2 border-tile/20 relative md:-mt-4 reveal" style="transition-delay: 0.1s">
+                    <div class="absolute top-4 right-4 z-10 bg-tile text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Mest populær</div>
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/model-standard-130cm.jpg" alt="Standard TV-bord 130 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-gold-light text-gold text-xs font-semibold uppercase tracking-wide rounded-full">Standard</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">130 cm</h3>
+                        <p class="text-warm mt-2">Den perfekte størrelse til de fleste stuer</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-tile">7.450 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 8.750 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Åben hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser på top</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Armeringsnet for holdbarhed</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Indbygget app-styret LED (tilvalg +1.995 kr)</li>
+                        </ul>
+
+                        <div class="mt-6 p-4 bg-cream rounded-xl border border-stone/8">
+                            <p class="text-sm font-semibold text-stone">Estimeret vægt: 58 kg</p>
+                            <p class="text-xs text-warm mt-1">Baseret på materialer • kan variere ±5 kg</p>
+                        </div>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center bg-tile hover:bg-tile-dark text-white py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Stor -->
+                <article class="product-card bg-white rounded-3xl overflow-hidden shadow-soft border border-stone/5 reveal" style="transition-delay: 0.2s">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/model-stor-160cm.jpg" alt="Stor TV-bord 160 cm" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-7">
+                        <span class="inline-block px-3 py-1 bg-gold-light text-gold text-xs font-semibold uppercase tracking-wide rounded-full">Stor</span>
+                        <h3 class="font-display text-3xl font-semibold mt-4">160 cm</h3>
+                        <p class="text-warm mt-2">Til store stuer med masser af opbevaring</p>
+
+                        <div class="mt-6 pt-6 border-t border-stone/8">
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-display text-4xl font-semibold text-stone">8.950 kr</span>
+                                <span class="text-sm text-warm">inkl. moms</span>
+                            </div>
+                            <p class="text-sm text-warm/70 line-through mt-1">Normalpris 10.500 kr</p>
+                        </div>
+
+                        <ul class="mt-6 space-y-2.5 text-sm text-warm">
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Ekstra stor hylde</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> 10×10 cm fliser</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Premium finish</li>
+                            <li class="flex items-center gap-2.5"><span class="w-5 h-5 rounded-full bg-tile-light text-tile flex items-center justify-center text-xs">✓</span> Indbygget app-styret LED (tilvalg +1.995 kr)</li>
+                        </ul>
+
+                        <div class="mt-6 p-4 bg-cream rounded-xl border border-stone/8">
+                            <p class="text-sm font-semibold text-stone">Estimeret vægt: 68 kg</p>
+                            <p class="text-xs text-warm mt-1">Baseret på materialer • kan variere ±5 kg</p>
+                        </div>
+
+                        <a href="#kontakt" class="mt-8 block w-full text-center border-2 border-stone/10 hover:border-tile hover:text-tile text-stone py-3.5 rounded-full font-semibold transition-colors">
+                            Bestil denne model
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <p class="text-center text-sm text-warm mt-10 reveal">Custom løsninger: materialer + 400 kr/time + 20% margin. <a href="#kontakt" class="text-tile font-medium hover:underline">Kontakt os</a> for et tilbud.</p>
+        </div>
+    </section>
+
+<!-- Fordele -->
+    <section id="fordele" class="py-20 md:py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal">
+                    <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Fordele</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone leading-tight">Hvorfor vælge<br>Okker Design?</h2>
+                    <p class="mt-5 text-warm text-lg leading-relaxed">Vi kombinerer høj håndværksmæssig kvalitet med tidløst design — så du får et møbel der både ser fantastisk ud og holder i mange år.</p>
+                    <a href="#proces" class="inline-flex items-center gap-2 mt-8 text-tile font-semibold hover:gap-3 transition-all">
+                        Se hvordan det laves
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <!-- LED Feature -->
+                    <div class="bg-cream rounded-2xl p-6 reveal">
+                        <div class="w-11 h-11 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6 6 0 106 0m-6 0a6 6 0 016 0m-12 6.75h12"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Indbygget app-styret LED belysning</h3>
+                        <p class="text-sm text-warm leading-relaxed">Professionel LED i aluminiumsprofiler med diffusor i den åbne hylde. Styr det hele fra mobilen (dæmpning, scener, tidsplaner). Fås som tilvalg for 1.995 kr.</p>
+                    </div>
+
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.1s">
+                        <div class="w-11 h-11 rounded-xl bg-tile-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Høj kvalitet</h3>
+                        <p class="text-sm text-warm leading-relaxed">Bygget i krydsfiner med armeringsnet, fleksibel klæber og professionel fugning — lavet til at holde.</p>
+                    </div>
+
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.2s">
+                        <div class="w-11 h-11 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0 0 .5-1.5 1.5-2.5s2.5-1.5 2.5-1.5"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Custom muligheder</h3>
+                        <p class="text-sm text-warm leading-relaxed">Vælg størrelse, flisemønster, finish og LED-belysning. Vi laver det præcis som du ønsker.</p>
+                    </div>
+
+                    <div class="bg-cream rounded-2xl p-6 reveal" style="transition-delay: 0.3s">
+                        <div class="w-11 h-11 rounded-xl bg-tile-light flex items-center justify-center mb-4">
+                            <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Håndlavet i Danmark</h3>
+                        <p class="text-sm text-warm leading-relaxed">Hvert TV-bord bliver lavet med omhu i Danmark af erfarne håndværkere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Proces -->
+    <section id="proces" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Proces</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone">Hvordan det laves</h2>
+                <p class="mt-4 text-warm text-lg">Høj kvalitet fra første snit til sidste fuge</p>
+            </div>
+
+            <div class="hidden lg:block process-line max-w-4xl mx-auto mb-0 -mt-4 relative top-8 z-0 reveal"></div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">1</div>
+                    <h3 class="font-semibold text-lg mb-2">Design & mål</h3>
+                    <p class="text-sm text-warm leading-relaxed">Vi aftaler størrelse, flisetype, finish og om du vil have LED-belysning.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.1s">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">2</div>
+                    <h3 class="font-semibold text-lg mb-2">Bygning</h3>
+                    <p class="text-sm text-warm leading-relaxed">Solid kasse i krydsfiner med åben hylde. Kanaler til LED-profiler fræses hvis ønsket.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.2s">
+                    <div class="w-10 h-10 rounded-full bg-tile text-white font-display text-xl font-semibold flex items-center justify-center mb-5">3</div>
+                    <h3 class="font-semibold text-lg mb-2">Fliseopsætning</h3>
+                    <p class="text-sm text-warm leading-relaxed">Primer, armeringsnet, fleksibel klæber og 10×10 cm fliser lagt præcist.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-7 shadow-soft border border-stone/5 reveal" style="transition-delay: 0.3s">
+                    <div class="w-10 h-10 rounded-full bg-gold text-white font-display text-xl font-semibold flex items-center justify-center mb-5">4</div>
+                    <h3 class="font-semibold text-lg mb-2">Fuge & finish + LED</h3>
+                    <p class="text-sm text-warm leading-relaxed">Professionel fuge og finish. LED monteres og testes inden levering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Galleri -->
+    <section id="galleri" class="py-20 md:py-28 bg-stone">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <p class="section-label text-xs font-semibold uppercase text-gold mb-3">Galleri</p>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-white">Inspiration & eksempler</h2>
+                <p class="mt-4 text-white/60 text-lg">Klik på et billede for at se det i fuld størrelse</p>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"></div>
+        </div>
+    </section>
+
+<!-- Kontakt -->
+    <section id="kontakt" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <div class="reveal">
+                    <p class="section-label text-xs font-semibold uppercase text-tile mb-3">Kontakt</p>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-stone leading-tight">Klar til dit<br>nye TV-bord?</h2>
+                    <p class="mt-5 text-warm text-lg leading-relaxed">Skriv til os for et uforpligtende tilbud — både på standardmodeller og custom løsninger med LED.</p>
+
+                    <div class="mt-10 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-tile-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">E-mail</p>
+                                <a href="mailto:Mattomadsen@proton.me" class="text-tile hover:underline">Mattomadsen@proton.me</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-tile-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-tile" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">Lokation</p>
+                                <p class="text-warm">Ebeltoft, Danmark</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-light flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone">Svartid</p>
+                                <p class="text-warm">Normalt inden for 1–2 hverdage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-card p-8 md:p-10 border border-stone/5 reveal" style="transition-delay: 0.15s">
+                    <form action="mailto:Mattomadsen@proton.me" method="post" enctype="text/plain">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label class="block text-sm font-medium text-stone mb-2">Navn</label>
+                                <input type="text" name="navn" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone mb-2">Telefon</label>
+                                <input type="tel" name="telefon" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="block text-sm font-medium text-stone mb-2">Din email <span class="text-red-500">*</span></label>
+                            <input type="email" name="email" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" placeholder="din@email.dk" required>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="block text-sm font-medium text-stone mb-2">Ønsket model / størrelse</label>
+                            <input type="text" name="model" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50" placeholder="F.eks. Standard 130 cm eller custom">
+                        </div>
+
+                        <div class="mb-7">
+                            <label class="block text-sm font-medium text-stone mb-2">Besked</label>
+                            <textarea name="besked" rows="4" class="input-field w-full border border-stone/15 rounded-xl px-4 py-3 bg-cream/50 resize-none" placeholder="Skriv gerne dine ønsker her, inkl. LED hvis ønsket..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-tile hover:bg-tile-dark text-white py-4 rounded-full font-semibold text-lg transition-colors">
+                            Send forespørgsel
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer class="bg-stone text-white py-14">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <p class="font-display text-2xl font-semibold">Okker Design</p>
+                    <p class="text-sm text-white/50 mt-1">Håndlavet i Danmark</p>
+                </div>
+                <div class="flex gap-6 text-sm text-white/50">
+                    <a href="#produkter" class="hover:text-white transition-colors">Produkter</a>
+                    <a href="#galleri" class="hover:text-white transition-colors">Galleri</a>
+                    <a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-10 pt-8 text-center text-xs text-white/30">
+                © 2026 Okker Design · Alle rettigheder forbeholdes
+            </div>
+        </div>
+    </footer>
+
 
     <!-- Lightbox -->
     <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-stone/95 items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true">
